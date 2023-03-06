@@ -1,0 +1,366 @@
+@charset "utf-8";
+
+body{
+    background:#f0f0f0;
+    font-family:'Marcellus', serif,"游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ",'Dancing Script', cursive,sans-serif;
+	color: #333;
+	font-size:1rem;
+	line-height:1.85;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%; 
+	word-wrap: break-word;
+}
+/* Header */
+#g-nav{
+  /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+  position:fixed;
+  z-index: 999;
+  /*ナビのスタート位置と形状*/
+top:0;
+  right: -100%;
+width:30%;
+  height: 100vh;/*ナビの高さ*/
+background: linear-gradient(45deg,rgba(88,182,211,.9),rgba(229,93,135,.9));/*背景色（グラデーション）*/
+  /*動き*/
+transition: all 0.6s;
+}
+
+/*アクティブクラスがついたら位置を0に*/
+#g-nav.panelactive{
+  right: 0;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999; 
+  width: 30%;
+  height: 100vh;/*表示する高さ*/
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*横幅が768px以下になった際の指定*/
+@media only screen and (max-width: 768px) {
+  #g-nav,
+  #g-nav.panelactive #g-nav-list{
+      width:100%;
+  }
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 999;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav li{
+list-style: none;
+  text-align: center;
+}
+
+#g-nav li a{
+color: #fff;
+font-family:'Dancing Script';
+text-decoration: none;
+padding:10px;
+display: block;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+font-weight: bold;
+  transition: all .5s;
+}
+
+#g-nav li a:hover{
+  color:#ccc;
+}
+
+/*===========================================================*/
+/* 機能編	3本線が×に*/
+/*===========================================================*/
+.openbtn{
+	position:fixed;
+    z-index: 9999;/*ボタンを最前面に*/
+	top:10px;
+	right: 10px;
+	cursor: pointer;
+    width: 50px;
+    height:50px;
+}
+	
+/*×に変化*/	
+.openbtn span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+	background-color: #fff;
+    width: 45%;
+}
+
+.openbtn span:nth-of-type(1) {
+	top:15px;	
+}
+
+.openbtn span:nth-of-type(2) {
+	top:23px;
+}
+
+.openbtn span:nth-of-type(3) {
+	top:31px;
+}
+
+.openbtn.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+	opacity: 0;
+}
+
+.openbtn.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+
+/* Hero */
+/* kv */
+.kv{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .kv .main-copy{
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: .2em;
+  }
+  
+  .kv .sub-copy{
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  /* video */
+  .video{
+    width: 100%;
+    height: 100vh;
+    /* background: url(../img/orange2021.jpg) no-repeat center/cover; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  .video::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #10394b;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: .3;
+  }
+  
+  .video video{
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  
+@media screen and (min-width: 768px) {
+  /* kv */
+  .kv{
+    min-width: 768px;
+  }
+
+  .kv .main-copy{
+    font-size: 60px;
+  }
+
+  .kv .sub-copy{
+    font-size: 30px;
+  }
+
+  /* video */
+  .video{
+    min-width: 768px;
+  }
+}
+
+@media screen and (max-width:768px) {
+body{
+  font-weight: bold;
+	}
+
+}
+
+ul{
+	margin:0;
+	padding: 0;
+	list-style: none;
+}
+
+a{
+	color: #333;
+    outline: none;
+}
+
+a:hover,
+a:active{
+	text-decoration: none;
+}
+
+
+
+                            /* Work */
+
+.work .section-index{
+  text-align: center;
+}
+.work .section-index h1{
+  font-family: 'Dancing Script' ;
+  font-weight: 900;
+  font-size: 48px;
+  padding-top: 2rem;
+}
+
+.work #target-work{
+  padding-top: 1rem;
+}
+
+
+                        /* About */
+
+.about .section-index{
+  text-align: center;
+}
+.about .section-index h1{
+  font-family: 'Dancing Script' ;
+  font-weight: 900;
+  font-size: 48px;
+  padding-top: 2rem;
+}
+
+.about .wrapper{
+  padding-top: 50px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.about .bg-about{
+  width: 100%;
+  height: 150vh;
+  background-image:url(../img/children.jpg);
+  background-color: rgb(255,255,255,0.8);
+  background-blend-mode: lighten;
+  background-position: center;
+  background-size: cover;
+}
+
+.about .wrapper details{
+  padding: 0 16px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-blend-mode: lighten;
+  background-position: center;
+  background-size: cover;
+}
+.about .wrapper summary{
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;height: auto;
+}
+.about .wrapper details p{
+  color: #333;
+  font-weight:bold;
+}
+.about .wrapper summary::before{
+  transform: rotate(90deg);
+}
+.about .wrapper details:nth-child(2){
+  margin-top: 40px;
+}
+.about .wrapper details:nth-child(3){
+  margin-top: 40px;
+}
+
+
+
+                       /* Contact */
+
+.contact .wrapper{
+height: 100vh;
+padding-top: 100px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.contact .wrapper{
+background-image:url(../img/cloth.jpg);
+background-color: rgb(255,255,255,0.8);
+background-blend-mode: lighten;
+background-position: center;
+background-size: cover;
+text-align: center;
+}
+.contact .section-index h1{
+  font-family: 'Dancing Script' ;
+  font-weight: 600;
+  font-size: 48px;
+}
+.contact .comment{
+  max-width: 600px;
+  font-weight: bold;
+  padding-top: 100px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width:768px){
+  .contact .comment{
+    max-width: 450px;
+    font-size: 1rem;
+  }
+}
+
+/* copyright */
+small{
+    position: absolute;
+    left:20px;
+    top:40%;
+    color: #fff;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
