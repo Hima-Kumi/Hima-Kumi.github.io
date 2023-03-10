@@ -167,12 +167,14 @@ font-weight: bold;
   .video{
     width: 100%;
     height: 100vh;
-    /* background: url(../img/orange2021.jpg) no-repeat center/cover; */
+    background: url(../img/little-girl.jpg) no-repeat center/cover;
     position: absolute;
     top: 0;
     left: 0;
     overflow: hidden;
     z-index: -1;
+    opacity: .8;
+    background-color: #10394b;
   }
   
   .video::after{
@@ -216,13 +218,24 @@ font-weight: bold;
   .video{
     min-width: 768px;
   }
+  .video-sp{
+    display: none;
+  }
+  .video-pc{
+    display: block;
+  }
 }
 
 @media screen and (max-width:768px) {
 body{
   font-weight: bold;
 	}
-
+.video-pc{
+  display: none;
+}
+video-sp{
+  display: block;
+}
 }
 
 ul{
